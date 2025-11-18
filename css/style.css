@@ -1,0 +1,221 @@
+/* ========================================= */
+/* MÓDULO 2: ESTILO PROFISSIONAL E RESPONSIVIDADE */
+/* ========================================= */
+
+:root {
+    /* Cores baseadas no design de referência */
+    --primary-color: #007bff; /* Azul Claro/Ação */
+    --secondary-color: #f44336; /* Vermelho/Destaque */
+    --header-bg-color: #1a237e; /* Azul Escuro (Navy) para o topo */
+    --text-color: #333;
+    --background-color: #f8f8f8; /* Fundo levemente cinza */
+    --card-background: white;
+    --font-stack: 'Inter', sans-serif; /* Fonte moderna */
+    --spacing-default: 1.5rem;
+}
+
+/* Reset Básico e Tipografia */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-stack);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ========================================= */
+/* CABEÇALHO (TOPO AZUL) */
+/* ========================================= */
+
+header {
+    background-color: var(--header-bg-color); /* Azul Escuro */
+    padding: 0.75rem var(--spacing-default);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h1 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+header .logo p {
+    display: none; 
+}
+
+/* Navegação */
+nav ul {
+    list-style: none;
+    display: flex; /* ATIVA O MENU NA HORIZONTAL NO DESKTOP */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white; /* Cor do texto branco no topo azul */
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de Destaque na Nav (Doar Agora) */
+.button-nav {
+    background-color: var(--primary-color) !important; 
+    color: white !important;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+.button-nav:hover {
+    background-color: #0056b3 !important;
+}
+
+/* ========================================= */
+/* ESTILO DOS TÍTULOS E CONTEÚDO PRINCIPAL */
+/* ========================================= */
+
+main {
+    padding: var(--spacing-default);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Título Principal H2 (Reconstruindo Vidas...) */
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--header-bg-color); /* Título em azul escuro */
+    font-weight: 800;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+/* Subtítulos de Artigos e Seções */
+h3 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Estilo para Imagens em Seções */
+.hero-image {
+    width: 100%;
+    max-width: 800px; 
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo dos Cards de Artigo */
+.articles-grid {
+    display: grid;
+    gap: 2.5rem; 
+    padding: 1rem 0;
+}
+
+.articles-grid article {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    gap: 1.5rem;
+}
+.articles-grid article img {
+    flex-shrink: 0; 
+    width: 150px;
+    height: 150px;
+    object-fit: cover; 
+    border-radius: 4px;
+}
+.articles-grid article:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+
+/* SEÇÃO ESTATÍSTICAS (RODAPÉ AZUL ESCURO) */
+#estatisticas {
+    margin-top: 3rem;
+    background-color: var(--header-bg-color);
+    color: white;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+#estatisticas h2 {
+    color: white;
+    margin-top: 0;
+}
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+}
+.stats-container span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.stats-container p {
+    margin: 0.5rem 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+    margin-top: 2rem;
+}
+
+
+/* ========================================= */
+/* RESPONSIVIDADE (MOBILE-FIRST) */
+/* ========================================= */
+
+@media (max-width: 767px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav ul {
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+    nav ul li a {
+        display: block;
+        margin: 0.2rem 0;
+    }
+    .articles-grid article {
+        flex-direction: column !important; 
+        text-align: center;
+    }
+    .articles-grid article img {
+        width: 100%;
+        height: auto;
+        max-height: 250px;
+    }
+}
+
+@media (min-width: 768px) {
+    /* Layout da grade de artigos em 2 colunas para desktop */
+    .articles-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
